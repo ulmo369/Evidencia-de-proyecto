@@ -39,7 +39,7 @@ def floor(value):
     """Round value down to grid with square size 133."""
     return ((value + 200) // 133) * 133 - 200
 
-
+"""Variables for Tic Tac Toe"""
 state = {'player': 0}
 players = [drawx, drawo]
 
@@ -55,6 +55,7 @@ def tap(x, y):
     state['player'] = not player
 
 
+"""initialize the game."""
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)

@@ -3,6 +3,7 @@ from turtle import (up, goto, clear, update, setup, onkey, done,
                     listen, tracer, hideturtle, ontimer, dot, bgcolor, Turtle)
 from freegames import floor, vector
 
+"Initialize variables with default values"
 state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
@@ -151,6 +152,7 @@ def change(x, y):
         aim.y = y
 
 
+"Call all functions"
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)

@@ -23,12 +23,20 @@ def grid():
 
 def drawx(x, y):
     """Draw X player."""
+
+    #Select color red and width 10
+    color('red')
+    width(10)
     line(x, y, x + 133, y + 133)
     line(x, y + 133, x + 133, y)
 
 
 def drawo(x, y):
     """Draw O player."""
+
+    #Select color blue and width 10
+    color('blue')
+    width(10)
     up()
     goto(x + 67, y + 5)
     down()
@@ -39,20 +47,28 @@ def floor(value):
     """Round value down to grid with square size 133."""
     return ((value + 200) // 133) * 133 - 200
 
+
 """Variables for Tic Tac Toe"""
 state = {'player': 0}
 players = [drawx, drawo]
+#draw board with '-' for empty
+board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
 
 
 def tap(x, y):
     """Draw X or O in tapped square."""
     x = floor(x)
     y = floor(y)
-    player = state['player']
-    draw = players[player]
-    draw(x, y)
-    update()
-    state['player'] = not player
+    row = int((y + 200) / 133)
+    col = int((x + 200) / 133)
+
+    if board[row][col] == '-':
+        player = state['player']
+        draw = players[player]
+        draw(x, y)
+        update()
+        state['player'] = not player
+        board[row][col] = 'X' if player == 0 else 'O'
 
 
 """initialize the game."""

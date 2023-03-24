@@ -1,13 +1,4 @@
-"""Memory, puzzle game of number pairs.
-
-Exercises:
-
-1. Count and print how many taps occur.
-2. Decrease the number of tiles to a 4x4 grid.
-3. Detect when all tiles are revealed.
-4. Center single-digit tile.
-5. Use letters instead of tiles.
-"""
+# Memory, puzzle game of number pairs.
 
 from random import *
 from turtle import *
@@ -19,9 +10,8 @@ tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
 
-
+# Draw white square with black outline at (x, y).
 def square(x, y):
-    """Draw white square with black outline at (x, y)."""
     up()
     goto(x, y)
     down()
@@ -32,19 +22,16 @@ def square(x, y):
         left(90)
     end_fill()
 
-
+# Convert (x, y) coordinates to tiles index.
 def index(x, y):
-    """Convert (x, y) coordinates to tiles index."""
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
 
-
+# Convert tiles count to (x, y) coordinates
 def xy(count):
-    """Convert tiles count to (x, y) coordinates."""
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
-
+# Update mark and hidden tiles based on tap.
 def tap(x, y):
-    """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
 
@@ -55,9 +42,8 @@ def tap(x, y):
         hide[mark] = False
         state['mark'] = None
 
-
+# Draw image and tiles.
 def draw():
-    """Draw image and tiles."""
     clear()
     goto(0, 0)
     shape(car)
@@ -80,7 +66,7 @@ def draw():
     update()
     ontimer(draw, 100)
 
-
+# Initialize the game
 shuffle(tiles)
 setup(420, 420, 370, 0)
 addshape(car)

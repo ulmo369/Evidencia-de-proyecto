@@ -1,10 +1,12 @@
 # Memory, puzzle game of number pairs.
 
+# Import modules
 from random import *
 from turtle import *
 
 from freegames import path
 
+#Define variables
 car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
@@ -33,8 +35,7 @@ def xy(count):
 # Update mark and hidden tiles based on tap.
 def tap(x, y):
     spot = index(x, y)
-    mark = state['mark']
-
+    mark = state['mark']    
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:

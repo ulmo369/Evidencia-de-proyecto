@@ -78,8 +78,8 @@ def valid(point):
 
 def world():
     "Draw world using path."
-    bgcolor('black')
-    path.color('blue')
+    bgcolor('white')
+    path.color('green')
 
     for index in range(len(tiles)):
         tile = tiles[index]

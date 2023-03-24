@@ -51,7 +51,7 @@ def floor(value):
 """Variables for Tic Tac Toe"""
 state = {'player': 0}
 players = [drawx, drawo]
-#draw board with '-' for empty
+#Draw board with '-' for empty
 board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
 
 

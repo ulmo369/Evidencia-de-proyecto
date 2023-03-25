@@ -75,6 +75,12 @@ def draw():
 
     update()
     ontimer(draw, 100)
+    #
+    if all(not h for h in hide):
+        up()
+        goto(0, -150)
+        color('black')
+        write('¡Juego terminado!', align='center', font=('Arial', 24, 'normal'))
 
 # Initialize the game
 shuffle(tiles)

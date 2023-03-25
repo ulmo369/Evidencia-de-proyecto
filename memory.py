@@ -1,7 +1,7 @@
 # Memory, puzzle game of number pairs.
 
 # Import modules
-from random import (clear, shape, stamp, write, update, ontimer,
+from random import (clear, shape, stamp, update, ontimer,
                     write, shuffle, setup, addshape, hideturtle,
                     tracer, onscreenclick, done)
 from turtle import (up, goto, down, color, begin_fill, forward,
@@ -43,17 +43,15 @@ def xy(count):
 def tap(x, y):
     spot = index(x, y)
     mark = state['mark']
-    
     # Count the number of taps
     state['tap_count'] = state.get('tap_count', 0) + 1
-    
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
-    # Display the number of taps 
+    # Display the number of taps
     print(f"Tap count: {state['tap_count']}")
 
 

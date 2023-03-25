@@ -1,19 +1,20 @@
 # Memory, puzzle game of number pairs.
 
 # Import modules
-from random import *
-from turtle import *
+from random import (clear, shape, stamp, update, ontimer,
+                    write, shuffle, setup, addshape, hideturtle,
+                    tracer, onscreenclick, done)
+from turtle import (up, goto, down, color, begin_fill, forward,
+                    left, end_fill)
 
 from freegames import path
 
-#Define variables
+# Define variables
 car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
 
-# Define the counter 
-counter = 0
 
 # Draw white square with black outline at (x, y).
 def square(x, y):
@@ -27,30 +28,32 @@ def square(x, y):
         left(90)
     end_fill()
 
+
 # Convert (x, y) coordinates to tiles index.
 def index(x, y):
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
+
 
 # Convert tiles count to (x, y) coordinates
 def xy(count):
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
+
 # Update mark and hidden tiles based on tap.
 def tap(x, y):
     spot = index(x, y)
     mark = state['mark']
-    
     # Count the number of taps
     state['tap_count'] = state.get('tap_count', 0) + 1
-    
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
-    # Display the number of taps 
+    # Display the number of taps
     print(f"Tap count: {state['tap_count']}")
+
 
 # Draw image and tiles.
 def draw():
@@ -75,12 +78,14 @@ def draw():
 
     update()
     ontimer(draw, 100)
-    #
+    # Mostrar cuando el juego fue terminado
     if all(not h for h in hide):
         up()
         goto(0, -150)
         color('black')
-        write('¡Juego terminado!', align='center', font=('Arial', 24, 'normal'))
+        write('¡Juego terminado!', align='center',
+              font=('Arial', 24, 'normal'))
+
 
 # Initialize the game
 shuffle(tiles)
@@ -91,4 +96,3 @@ tracer(False)
 onscreenclick(tap)
 draw()
 done()
-

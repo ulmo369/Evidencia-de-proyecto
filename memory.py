@@ -1,7 +1,7 @@
 # Memory, puzzle game of number pairs.
 
 # Import modules
-from random import *
+from random import (clear, shape, stamp, write, update, ontimer, write, shuffle, setup, addshape, hideturtle, tracer, onscreenclick, done)
 from turtle import (up, goto, down, color, begin_fill, forward, left, end_fill)
 
 from freegames import path

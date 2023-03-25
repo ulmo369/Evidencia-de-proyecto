@@ -2,7 +2,7 @@
 
 # Import modules
 from random import *
-from turtle import *
+from turtle import (up, goto, down, color, begin_fill, forward, left, end_fill)
 
 from freegames import path
 
@@ -11,9 +11,6 @@ car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
-
-# Define the counter 
-counter = 0
 
 # Draw white square with black outline at (x, y).
 def square(x, y):
@@ -75,7 +72,7 @@ def draw():
 
     update()
     ontimer(draw, 100)
-    #
+    # Mostrar cuando el juego fue terminado
     if all(not h for h in hide):
         up()
         goto(0, -150)

@@ -6,11 +6,12 @@ from turtle import (up, goto, down, color, begin_fill, forward, left, end_fill)
 
 from freegames import path
 
-#Define variables
+# Define variables
 car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
+
 
 # Draw white square with black outline at (x, y).
 def square(x, y):
@@ -24,13 +25,16 @@ def square(x, y):
         left(90)
     end_fill()
 
+
 # Convert (x, y) coordinates to tiles index.
 def index(x, y):
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
 
+
 # Convert tiles count to (x, y) coordinates
 def xy(count):
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
+
 
 # Update mark and hidden tiles based on tap.
 def tap(x, y):
@@ -48,6 +52,7 @@ def tap(x, y):
         state['mark'] = None
     # Display the number of taps 
     print(f"Tap count: {state['tap_count']}")
+
 
 # Draw image and tiles.
 def draw():
@@ -78,6 +83,7 @@ def draw():
         goto(0, -150)
         color('black')
         write('¡Juego terminado!', align='center', font=('Arial', 24, 'normal'))
+
 
 # Initialize the game
 shuffle(tiles)

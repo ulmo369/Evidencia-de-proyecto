@@ -8,7 +8,9 @@ Exercises
 4. How could you create a computer player?
 """
 
-from turtle import *
+from turtle import (color, width, up, goto, down, circle, setup,
+                    hideturtle, tracer, update, onscreenclick, done)
+
 
 from freegames import line
 
@@ -24,7 +26,7 @@ def grid():
 def drawx(x, y):
     """Draw X player."""
 
-    #Select color red and width 10
+    # Select color red and width 10
     color('red')
     width(10)
     line(x, y, x + 133, y + 133)
@@ -34,7 +36,7 @@ def drawx(x, y):
 def drawo(x, y):
     """Draw O player."""
 
-    #Select color blue and width 10
+    # Select color blue and width 10
     color('blue')
     width(10)
     up()
@@ -51,7 +53,7 @@ def floor(value):
 """Variables for Tic Tac Toe"""
 state = {'player': 0}
 players = [drawx, drawo]
-#Draw board with '-' for empty
+# Draw board with '-' for empty
 board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
 
 
@@ -61,7 +63,7 @@ def tap(x, y):
     y = floor(y)
     row = int((y + 200) / 133)
     col = int((x + 200) / 133)
-
+    # Check if spot is empty
     if board[row][col] == '-':
         player = state['player']
         draw = players[player]

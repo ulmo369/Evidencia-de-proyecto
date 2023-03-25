@@ -12,6 +12,9 @@ tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
 
+# Define the counter 
+counter = 0
+
 # Draw white square with black outline at (x, y).
 def square(x, y):
     up()
@@ -35,13 +38,19 @@ def xy(count):
 # Update mark and hidden tiles based on tap.
 def tap(x, y):
     spot = index(x, y)
-    mark = state['mark']    
+    mark = state['mark']
+    
+    # Count the number of taps
+    state['tap_count'] = state.get('tap_count', 0) + 1
+    
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+    # Display the number of taps 
+    print(f"Tap count: {state['tap_count']}")
 
 # Draw image and tiles.
 def draw():
@@ -76,3 +85,4 @@ tracer(False)
 onscreenclick(tap)
 draw()
 done()
+
